@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Регистрация</title> 
+<link rel="stylesheet" href="styles.css"> 
+<script> 
+    function validateForm() { 
+        var name = document.forms["registrationForm"]["name"].value; 
+        var password = document.forms["registrationForm"]["password"].value; 
+        var confirmPassword = document.forms["registrationForm"]["confirmPassword"].value; 
+        var email = document.forms["registrationForm"]["email"].value; 
+        var message = document.forms["registrationForm"]["message"].value; 
+ 
+        if (name == "") { 
+            alert("Введите имя"); 
+            document.forms["registrationForm"]["name"].focus(); 
+            return false; 
+        } 
+ 
+        if (password == "" || password.length < 5) { 
+            alert("Ваш пароль должен содержать минимум 5 символов"); 
+            document.forms["registrationForm"]["password"].focus(); 
+            return false; 
+        } 
+ 
+        if (password !== confirmPassword) { 
+            alert("Пароли не совпадают"); 
+            document.forms["registrationForm"]["confirmPassword"].focus(); 
+            return false; 
+        } 
+ 
+        if (email == "" || email.indexOf("@") == -1) { 
+            alert("Введите корректный электронный адрес используя @"); 
+            document.forms["registrationForm"]["email"].focus(); 
+            return false; 
+        } 
+ 
+        if (message == "" || message.length < 10) { 
+            alert("Вы успешно зарегистрировались"); 
+            document.forms["registrationForm"]["message"].focus(); 
+            return false; 
+        } 
+ 
+        return true; 
+    } 
+</script> 
+</head> 
+<body> 
+ 
+<h2>Форма Регистрации</h2> 
+ 
+<form name="registrationForm" onsubmit="return validateForm()" method="post"> 
+  <label for="name">Имя:</label><br> 
+  <input type="text" id="name" name="name"><br><br> 
+  <label for="password">Пароль:</label><br> 
+  <input type="password" id="password" name="password"><br><br> 
+  <label for="confirmPassword">Подтвердите пароль:</label><br> 
+  <input type="password" id="confirmPassword" name="confirmPassword"><br><br> 
+  <label for="email">Email:</label><br> 
+  <input type="text" id="email" name="email"><br><br> 
+  <label for="message">Тема сообщения:</label><br> 
+  <input type="text" id="message" name="message"><br><br> 
+  <label for="message">Сообщение:</label><br> 
+  <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br> 
+  <input type="submit" value="Зарегистрироваться"> 
+</form> 
+</body> 
+</html>
